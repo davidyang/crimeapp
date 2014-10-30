@@ -26,11 +26,13 @@ app.controller('MainCtrl', function ($scope, $http, $filter){
 
     // Watch the view for changes in 'details'.  Use the changes to update latitude and longitude:
     $scope.$watch('details', function(details) {
-        $scope.map.center = {
-            latitude: details.geometry.location.lat(),
-            longitude: details.geometry.location.lng()
-        };
-        $scope.map.zoom = 16;
+        if(details) {
+            $scope.map.center = {
+                latitude: details.geometry.location.lat(),
+                longitude: details.geometry.location.lng()
+            };
+            $scope.map.zoom = 16;
+        }
     });
 
     // Create custom marker:
